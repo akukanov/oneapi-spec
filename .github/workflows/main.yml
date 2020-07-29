@@ -1,10 +1,10 @@
-name: CI
+sname: CI
 
 on: [push, pull_request]
 
 jobs:
   build:
-    if: github.repository == 'akukanov/oneAPI-spec'
+    if: github.repository == 'oneapi-src/oneAPI-spec'
     runs-on: ubuntu-latest
     container: rscohn2/oneapi-spec:latest
     steps:
