@@ -16,6 +16,7 @@ updates.
   ========  ==========  =========
   Version   Date        View                                                                                                            
   ========  ==========  =========
+  `1.0`_    09/14/2020  `HTML <https://spec.oneapi.com/versions/1.0/>`__ `PDF <https://spec.oneapi.com/versions/1.0/oneAPI-spec.pdf>`__
   `0.9`_    07/30/2020  `HTML <https://spec.oneapi.com/versions/0.9/>`__ `PDF <https://spec.oneapi.com/versions/0.9/oneAPI-spec.pdf>`__
   `0.85`_   06/29/2020  `HTML <https://spec.oneapi.com/versions/0.85/>`__ `PDF <https://spec.oneapi.com/versions/0.85/oneAPI-spec.pdf>`__
   `0.8`_    05/29/2020  `HTML <https://spec.oneapi.com/versions/0.8/>`__ `PDF <https://spec.oneapi.com/versions/0.8/oneAPI-spec.pdf>`__
@@ -25,6 +26,48 @@ updates.
 
 Release Notes
 =============
+
+1.0
+---
+
+* oneMKL
+
+  * Continuing modifications to all oneMKL domains
+  * Add oneMKL Exceptions and Error Handling
+
+* oneDNN
+
+
+* oneTBB
+
+  * Updated the named requirements
+  * Adjusted the API according to the latest product changes
+  * Improved the wording and descriptions for the flow graph API
+  * Cleared build warnings
+  
+* oneDAL
+   * Extended Programming model section, added description of the generic methods and descriptors, introduced task notation
+   * Extended Data Management section, introduced CSV data source, array, extended description of the tables and accessors
+   * Extended description of Error handling
+   * Added description of the training methods for PCA algorithm, introduced K-means initialization algorithm
+   * Extended Common interface section, added description of service data types used in the interfaces of the library
+   * Modified the library's namespace
+  
+* DPC++
+
+  
+* oneVPL
+
+  * A lot of cleaning to remove GEN/CPU bias and implementation details.
+  * New organization of structures' description.
+  * New entry point function to expose by any implementation: MFXInitialize which replaces obsolete MFXInit and MFXInitEx.
+  * Interface to choose and set subdevices (mfxExtDeviceAffinityMask) for execution.
+  * Header files cleaned up by removing MFX_VERSION checks (ala #if MFX_VERSION > 1.26) from headers.
+
+* oneCCL
+
+  * Updated operation attributes description
+  * Updated namings in API
 
 0.9
 ---

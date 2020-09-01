@@ -31,8 +31,9 @@ DPC++
 oneDPL
 ======
 
+* Fedorov, Andrey
 * **Kukanov, Alexey**
-* Smith, Timmie 
+* Smith, Timmie
 
 
 oneDNN
@@ -50,6 +51,8 @@ oneCCL
 Level Zero
 ==========
 
+* **Apodaca, Mike**
+* **Ashbaugh, Ben**
 * **Waters, Zack**
 
 
@@ -66,6 +69,7 @@ oneDAL
 oneTBB
 ======
 
+* Katranov, Alexei
 * **Kukanov, Alexey**
 
 
@@ -80,4 +84,15 @@ oneMKL
 ======
 
 * **Kraynyuk, Maria**
-* Patty, Spencer 
+* **Patty, Spencer**
+* Meterelliyoz, Mesut
+* Ertl, Rachel
+* Zhukova, Maria
+* Bollapragada, Datta
+* Dyakov, Pavel
+* Elizarova, Alina
+* Stepin, Andrey
+* Kolesov, Andrey
+* Caday, Peter
+* Knepper, Sarah
+* O'Connell, John

@@ -16,6 +16,9 @@ class RstBuilder(object):
     def add_function(self, declaration: str, namespace: str = None, level=0):
         self._add_name('function', declaration, namespace, level)
 
+    def add_enumclass(self, declaration: str, namespace: str = None, level=0):
+        self._add_name('enum-class', declaration, namespace, level)
+
     def add_param(self, tag: str, name: str, doc_text: str, level=0):
         assert tag in ['param', 'tparam']
         assert name
@@ -25,6 +28,14 @@ class RstBuilder(object):
 
     def add_member(self, declaration: str, level=0):
         assert declaration
+        self(f'.. cpp:member:: {declaration}', level)
+        self.add_blank_line()
+
+    def add_property_member(self, declaration: str, parent_fully_qualified_name: str, level=0):
+        assert declaration
+        assert parent_fully_qualified_name
+        fake_parent_namespace = '_'.join(parent_fully_qualified_name.split('::'))
+        self(f'.. cpp:namespace:: {fake_parent_namespace}_properties', level)
         self(f'.. cpp:member:: {declaration}', level)
         self.add_blank_line()
 
