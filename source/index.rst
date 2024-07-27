@@ -1,29 +1,31 @@
-.. sphinx-infodev documentation master file, created by
-   sphinx-quickstart on Sun Aug 11 19:58:43 2019.
-   You can adapt this file completely to your liking, but it should at least
-   contain the root `toctree` directive.
+.. SPDX-FileCopyrightText: 2019-2020 Intel Corporation
+..
+.. SPDX-License-Identifier: CC-BY-4.0
 
-oneAPI Specification
-====================
+**********************
+ oneAPI Specification
+**********************
+
+oneAPI is an open, free, and standards-based programming system that
+provides portability and performance across accelerators and
+generations of hardware.  oneAPI consists of a language and libraries
+for creating parallel applications:
+
+.. include:: elements/element_list.rst
+
 
 .. toctree::
-   :maxdepth: 6
-   :caption: Contents:
+   :hidden:
+   :maxdepth: 3
 
    introduction
    architecture
-   library-interop
-   elements/elements
-   elements/dpcpp/source/index
    elements/oneDPL/source/index
    elements/oneDNN/source/index
    elements/oneCCL/source/index
    elements/l0/source/index
    elements/oneDAL/source/index
    elements/oneTBB/source/nested-index
-   elements/oneVPL/source/index
    elements/oneMKL/source/index
-   contributors
+   Releases <https://oneapi-spec.uxlfoundation.org/>
    notices
-
-   

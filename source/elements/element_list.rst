@@ -1,7 +1,7 @@
-- :ref:`oneDPCPP-section`: oneAPI's core language for programming
-  accelerators and multiprocessors. DPCPP allows developers to reuse
-  code across hardware targets (CPUs and accelerators such as GPUs and
-  FPGAs) and tune for a specific architecture
+.. SPDX-FileCopyrightText: 2019-2020 Intel Corporation
+..
+.. SPDX-License-Identifier: CC-BY-4.0
+
 - :ref:`oneDPL-section`: A companion to the DPC++ Compiler for
   programming oneAPI devices with APIs from C++ standard library,
   Parallel STL, and extensions.
@@ -13,8 +13,5 @@
 - :ref:`oneDAL-section`: Algorithms for accelerated data science
 - :ref:`oneTBB-section`: Library for adding thread-based parallelism
   to complex applications on multiprocessors
-- :ref:`oneVPL-section`: Algorithms for accelerated video processing
 - :ref:`oneMKL-section`: High performance math routines for science,
   engineering, and financial applications
-
-  

@@ -1,27 +1,43 @@
-Error Handling
+.. SPDX-FileCopyrightText: 2019-2020 Intel Corporation
+..
+.. SPDX-License-Identifier: CC-BY-4.0
+
+==============
+Error handling
 ==============
 
-Error handling in oneCCL is implemented differently in C and C++ versions of API. 
-C version of API uses error codes that are returned by every exposed function, while C++ API uses exceptions.
+oneCCL error handling relies on the mechanism of C++ exceptions. If an error
+occurs, it shall be propagated at the point of a function call where it is
+caught using standard C++ error handling mechanism.
 
-**C version of oneCCL API:**
+Exception classification
+************************
 
-::
+Exception classification in oneCCL is aligned with C++ Standard Library classification. oneCCL introduces class that defines the base class in the hierarchy of oneCCL exception classes. All oneCCL routines throw exceptions inherited from this base class.
 
-    typedef enum
-    {
-        ccl_status_success               = 0,
-        ccl_status_out_of_resource       = 1,
-        ccl_status_invalid_arguments     = 2,
-        ccl_status_unimplemented         = 3,
-        ccl_status_runtime_error         = 4,
-        ccl_status_blocked_due_to_resize = 5,
+In the hierarchy of oneCCL exceptions, ``ccl::exception`` is the base class inherited from ``std::exception`` class. All other oneCCL exception classes are derived from this base class.
 
-        ccl_status_last_value
-    } ccl_status_t;
+This specification does not require implementations to perform error-checking. However, if an implementation does provide error-checking, it shall use the following exception classes. Additional implementation-specific exception classes can be used for exceptional conditions not fitting any of these classes.
 
-**C++ version of oneCCL API:**
+Common exceptions
+*****************
 
-::
+.. csv-table::
+    :header: "Exception class", "Description"
+    :widths: 40, 60
 
-    class ccl_error : public std::runtime_error
+    ".. _oneccl_exception:
+
+    ``ccl::exception``", "Reports general unspecified error"
+    ".. _oneccl_exception_invalid_argument:
+
+    ``ccl::invalid_argument``", "Reports an error when arguments to the operation were rejected"
+    ".. _oneccl_exception_host_bad_alloc:
+
+    ``ccl::host_bad_alloc``", "Reports an error that occurred during memory allocation on the host"
+    ".. _oneccl_exception_unimplemented:
+
+    ``ccl::unimplemented``", "Reports an error when the requested operation is not implemented"
+    ".. _oneccl_exception_unsupported:
+
+    ``ccl::unsupported``", "Reports an error when the requested operation is not supported"

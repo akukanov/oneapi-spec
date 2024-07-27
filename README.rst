@@ -1,172 +1,156 @@
+.. SPDX-FileCopyrightText: 2019-2020 Intel Corporation
+..
+.. SPDX-License-Identifier: CC-BY-4.0
+
 =====================
 oneAPI Specifications
 =====================
 
-This repo contains the sources for the `oneAPI Specification`_
+.. image:: https://github.com/uxlfoundation/oneAPI-spec/actions/workflows/pr.yml/badge.svg
+   :target: https://github.com/uxlfoundation/oneAPI-spec/actions/workflows/pr.yml
 
-The document is built with `Sphinx`_ using a theme provided by `Read
-the Docs`_
+.. image:: https://api.reuse.software/badge/github.com/uxlfoundation/oneAPI-spec
+   :target: https://api.reuse.software/info/github.com/uxlfoundation/oneAPI-spec
+   :alt: REUSE status
 
------------------------------------
-Layout of the Documents in the Repo
------------------------------------
+.. image:: https://www.bestpractices.dev/projects/8323/badge
+   :target: https://www.bestpractices.dev/projects/8323
 
-The specification is in the source directory. MKL, TBB, and Level Zero
-are in separate repos. See clones function in scripts/oneapi.py on how
-to clone them.
+This repository contains the sources for the `oneAPI
+Specification`_. For the latest build from main branch, see HTML_ and
+PDF_.
 
----------------------------------
-Editing with Github Web Interface
----------------------------------
+For more information about oneAPI, see `oneapi.io`_.  For information
+about future releases of the oneAPI specification, see the roadmap_.
+To be notified about new releases, become a release-only watcher of
+this repo.
 
-The simplest and quickest way to edit is directly in the github web
-interface. It has an editor, previewer, and lets you commit
-changes. You won't need to install any local tools. The previewer
-knows how to render RST, but not the sphinx directives so it will not
-display exactly as the real manual.
+The document is written using `reStructuredText`_ and built with
+`Sphinx`_ using a theme provided by `Read the Docs`_.
 
--------------------------
-Working with a Local Copy
--------------------------
+.. contents::
+   :local:
+   :depth: 1
 
-For bigger edits, you will need a local version of the tools. Clone
-this repo to your local system. scripts/oneapi.py is a helper script
-for the maintenance tasks. You can also look at the source if you want
-to do the same task manually.
+-------
+License
+-------
+
+The oneAPI specification is licensed under the Creative Commons Attribution 4.0
+International License.
+
+See `LICENSE <LICENSE.rst>`__ for more information.
+
+----------
+Contribute
+----------
+
+See `CONTRIBUTING <CONTRIBUTING.rst>`__ for more information.
+
+.. _build_spec:
+
+-----------------------
+Build the Specification
+-----------------------
+
+To build the specification document locally, clone this repository to
+your local system and follow the setup and build instructions. The
+setup and build steps make use of scripts/oneapi.py, a helper script
+for maintenance tasks. You can also look at the source if you want to
+see how to do the same task manually.
 
 Setup
 -----
 
-Install python 3 and doxygen (>= 1.8.17).  To install on **Ubuntu**::
+Install Python 3, Doxygen (>= 1.8.17), LaTeX, etc.  To install on **Ubuntu**::
 
    sudo scripts/install.sh
 
-Create and activate a python virtual environment with all required tools::
+Create and activate a Python virtual environment with all required tools::
 
   python scripts/oneapi.py spec-venv
   source spec-venv/bin/activate
-  
+
 To install directly with pip::
 
   pip install -r requirements.txt
 
-On windows::
+To install on Windows::
 
   python scripts\oneapi.py spec-venv
   spec-venv\Scripts\activate
-  
-MKL, DAL, and Level Zero are in other repos. To clone them::
 
-  python scripts/oneapi.py clones
+Build the Docs
+--------------
 
-Building the docs
------------------
-
-To build the html document::
+To build the HTML document, use the following command::
 
   python scripts/oneapi.py html
 
-This will not work on windows because we are using symbolic links for
-the elements that are in separate repos. However, windows can build
-individual specs for individual elements.
-
 The document is organized as a book with chapters. Each element of
 oneAPI is its own chapter and can be built separately. For example, to
-build the oneVPL chapter, do::
+build the oneVPL chapter, use the following command::
 
-  cd source/elements/oneVPL
-  python ../../../scripts/element.py html
-  
-To see the docs, visit build/html/index.html in your browser using a
-file:// URL. Build the pdf version with::
+  python scripts/oneapi.py html source/elements/oneVPL
+
+To view the HTML docs, visit build/html/index.html in your browser using a
+file:// URL.
+
+Build the pdf version wit the following command::
 
   python scripts/oneapi.py latexpdf
 
-And then view build/latexpdf/oneAPI-spec.pdf
+The generated PDF will be located at build/latexpdf/oneAPI-spec.pdf.
 
-Checking for Errors
--------------------
+Spell check::
 
-There are rst linting tools to check for errors::
-
-  find . -name '*.rst' | xargs rstcheck
-
-rstcheck finds errors in some of the template code and in the cpp
-examples. We may not want to try to correct them.
-
-Editing Tools
--------------
-
-For simple edits to individual files, you can use the github web
-interface.
-
-**Emacs** has a built-in ReST mode. It does some syntax highlighting and
-helps with some of the tedious aspects of ReST. M-q will rejustify
-long lines to fit the recommended 80 character line. It understands
-ReST formatting and won't mess up lists. C-= is a Swiss army knife. It
-will cycle between different characters for a section break adornment
-(e.g. --, ===,...)  It will make the section break adornment match the
-size of the text. Probably a lot more.
-
-**Visual Studio Code** has extensions for previewers and automatic
-linting. I could not find any support for rejustifying paragraphs to
-80 characters, which makes it difficult to use.
-
-------
-Docker
-------
-
-You can build a **Docker container** image with::
-
-   scripts/build-image.sh
-
-The tag will be oneapi-spec.  The script copies your proxy settings in
-the invoking shell so it will work inside the firewall.
+  python oneapi.doc. --verbose spelling
 
 --
 CI
 --
 
-We are currently using gitlab CI inside the intel firewall. See
-.gitlab-ci.yml for the configuration. When all the documents sources
-have been externally published, we will move it to public CI
-infrastructure.
+We use GitHub actions. See `<.github/workflows/ci.yml>`_.
 
-On every commit, the CI system builds and publishes the document to
-http://staging.spec.oneapi.com.s3-website-us-west-2.amazonaws.com/ci/branches
-with a different directory for the latest build of every branch.
+PR's trigger the CI to build the document and save it as an
+artifact. If you are working in a fork on GitHub, commits to the main
+branch will build and publish the document in the GitHub pages
+associated with the repository.
 
-For commits to the publish branch, the document is staged at:
-http://staging.spec.oneapi.com.s3-website-us-west-2.amazonaws.com/site/versions. with
-a different directory for every version. The version is obtained from
-source/conf/common_conf.py. There is a redirect from:
-http://staging.spec.oneapi.com.s3-website-us-west-2.amazonaws.com/site/
-to the latest version.
+------------------------
+Adding licenses to files
+------------------------
 
-To push to S3, the CI system configuration sets AWS_ACCESS_KEY_ID and
-AWS_SECRET_ACCESS_KEY environment variables.
 
-----------
-Publishing
-----------
+Use the reuse_ tool
 
-Commit to the publish branch. View the results on staging server. Push to production with::
+Code examples::
 
-  python scripts/oneapi.py prod-publish
+  reuse addheader --copyright "Constributors to the oneapi-spec project" --license MIT source/examples/host-task.cpp
 
-------------
-More Reading
-------------
+Doc sources::
 
-* `oneAPI Specification Style Guide <https:style-guide.rst>`_
-* `Sphinx Documentation <http://www.sphinx-doc.org/en/master/>`_
-* `rst docs`_: User and reference manuals.
-* `online editor/viewer`_: Web page that lets you type in some rst fragments
-  and view. Good for debugging.
+  reuse addheader --copyright "Constributors to the oneapi-spec project" --license CC-BY-4.0 source/index.rst
 
-.. _`rst tutorial`: http://www.sphinx-doc.org/en/master/usage/restructuredtext/basics.html
-.. _`rst docs`: http://docutils.sourceforge.net/rst.html
-.. _`online editor/viewer`: http://rst.aaroniles.net/
-.. _`oneAPI Specification`: https://spec.oneapi.com
+
+----------------
+Making a Release
+----------------
+
+1. Update:
+
+   * oneapi-doc.json
+   * releases/index.rst
+
+2. Tag it.
+3. Publish with oneAPI doc repo
+
+.. _`reStructuredText`: http://www.sphinx-doc.org/en/master/usage/restructuredtext/basics.html
 .. _`Sphinx`: http://www.sphinx-doc.org/en/master/
 .. _`Read the Docs`: https://readthedocs.org/
+.. _`oneAPI Specification`: https://oneapi.io/spec
+.. _reuse: https://pypi.org/project/reuse/
+.. _HTML: https://uxlfoundation.github.io/oneAPI-spec/spec/
+.. _PDF: https://uxlfoundation.github.io/oneAPI-spec/spec/oneAPI-spec.pdf
+.. _`oneapi.io`: https://oneapi.io
+.. _roadmap: roadmap.rst

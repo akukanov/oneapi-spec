@@ -1,15 +1,10 @@
+.. SPDX-FileCopyrightText: 2020 Intel Corporation
 ..
-  Copyright 2020 Intel Corporation
+.. SPDX-License-Identifier: CC-BY-4.0
 
-Introduction
-============
-
-oneAPI is an open, free, and standards-based programming system that
-provides portability and performance across accelerators and
-generations of hardware.  oneAPI consists of a language and libraries
-for creating parallel applications:
-
-.. include:: elements/element_list.rst
+==============
+ Introduction
+==============
 
 oneAPI simplifies software development by providing the same languages
 and programming models across accelerator architectures. In this
@@ -48,19 +43,19 @@ efficiently mapped to a diverse set of architectures: multi-core CPUs,
 GPUs, systolic arrays, and FPGAs.
 
 Target Audience
----------------
+===============
 
 The expected audience for this specification includes: application
 developers, middleware developers, system software providers, and
 hardware providers. As a *contributor* to this specification, you will
-shape the accelerator software eco-system. A productive and high
+shape the accelerator software ecosystem. A productive and high
 performing system must take into account the constraints at all levels
 of the software stack. As a *user* of this document, you can ensure
 that your components will inter-operate with applications and system
 software for the oneAPI platform.
 
 Goals of the Specification
---------------------------
+==========================
 
 oneAPI seeks to provide:
 
@@ -71,76 +66,21 @@ oneAPI seeks to provide:
   - *Performance transparency*: API's and language construct allow the
     programmer enough control over the mapping to hardware to create
     an efficient solution
-  
+
   - *Software stack portability*: Platform providers can port a oneAPI
     software stack by implementing the oneAPI Level Zero interface.
 
 Definitions
------------
+===========
 
 This specification uses the definition of must, must not, required,
 and so on specified in `RFC 2119`_.
 
 Contribution Guidelines
------------------------
+=======================
 
-This specification is a continuation of Intel’s decades-long history
-of working with standards groups and industry/academia initiatives
-such as The Khronos Group, to create and define specifications in an
-open and fair process to achieve interoperability and
-interchangeability. oneAPI is intended to be an open specification and
-we encourage you to help us make it better. Your feedback is optional,
-but to enable Intel to incorporate any feedback you may provide to
-this specification, and to further upstream your feedback to other
-standards bodies, including The Khronos Group SYCL specification,
-please submit your feedback under the terms and conditions below. Any
-contribution of your feedback to the oneAPI Specification does not
-prohibit you from also contributing your feedback directly to other
-standard bodies, including The Khronos Group under their respective
-submission policies.
-
-Contribute to the oneAPI Specification by opening issues in the oneAPI
-Specification `GitHub repository
-<https://github.com/oneapi-src/oneapi-spec>`__.
-
-Sign your work
-++++++++++++++
-
-Please include a signed-off-by tag in every contribution of your
-feedback. By including a signed-off-by tag, you agree that: (a) you
-have a right to license your feedback to Intel; (b) Intel will be free
-to use, disclose, reproduce, modify, license, or otherwise distribute
-your feedback at its sole discretion without any obligations or
-restrictions of any kind, including without limitation, intellectual
-property rights or licensing obligations; and (c) your feedback will
-be public and that a record of your feedback may be maintained
-indefinitely.
-
-If you agree to the above, every contribution of your feedback must
-include the following line using your real name and email address:
-Signed-off-by: Joe Smith joe.smith@email.com
-
-Versions
---------
-
-========  ==========  =========
-Version   Date        View                                                                                                            
-========  ==========  =========
-0.6.0_    01/31/2019  `HTML <https://spec.oneapi.com/versions/0.6.0/>`__ `PDF <https://spec.oneapi.com/versions/0.6.0/oneAPI-spec.pdf>`__
-0.5.0_    11/17/2019  `HTML <https://spec.oneapi.com/versions/0.5.0/>`__                                                                
-========  ==========  =========
-
-0.6.0
-+++++
-
-Open source release
-
-0.5.0
-+++++
-
-Initial public release
-
-.. todolist::
+See Contributing_.
 
 .. [*]: Other names and brands may be claimed as the property of others.
 .. _`RFC 2119`: https://tools.ietf.org/html/rfc2119
+.. _Contributing: https://github.com/uxlfoundation/CONTRIBUTING.rst

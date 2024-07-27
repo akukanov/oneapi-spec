@@ -1,10 +1,12 @@
+.. SPDX-FileCopyrightText: 2019-2020 Intel Corporation
 ..
-  Copyright 2020 Intel Corporation
+.. SPDX-License-Identifier: CC-BY-4.0
 
 .. _l0-section:
 
-|l0_full_name| (Level Zero)
-===========================
+==========
+Level Zero
+==========
 
 The |l0_full_name| (Level Zero) provides low-level
 direct-to-metal interfaces that are tailored to the devices in a
@@ -40,6 +42,6 @@ architectures, such as FPGAs.
 Detailed API Descriptions
 -------------------------
 
-The detailed specification for Level Zero is available `online`_.
+The detailed specification can be found online in the specification_.
 
-.. _`online`: ../../../oneL0/index.html
+.. _specification: https://spec.oneapi.io/level-zero/latest/index.html
