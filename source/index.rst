@@ -20,15 +20,12 @@ for creating parallel applications:
 
    introduction
    architecture
-   elements/sycl/source/index
    elements/oneDPL/source/index
    elements/oneDNN/source/index
    elements/oneCCL/source/index
    elements/l0/source/index
    elements/oneDAL/source/index
    elements/oneTBB/source/nested-index
-   elements/oneVPL/source/index
    elements/oneMKL/source/index
-   elements/oneART/source/nested-index
-   Releases <https://spec.oneapi.com/releases/index.html>
+   Releases <https://oneapi-spec.uxlfoundation.org/>
    notices

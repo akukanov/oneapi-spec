@@ -53,8 +53,8 @@ herk (Buffer Version)
 
    namespace oneapi::mkl::blas::column_major {
        void herk(sycl::queue &queue,
-                 onemkl::uplo upper_lower,
-                 onemkl::transpose trans,
+                 oneapi::mkl::uplo upper_lower,
+                 oneapi::mkl::transpose trans,
                  std::int64_t n,
                  std::int64_t k,
                  Treal alpha,
@@ -68,8 +68,8 @@ herk (Buffer Version)
 
    namespace oneapi::mkl::blas::row_major {
        void herk(sycl::queue &queue,
-                 onemkl::uplo upper_lower,
-                 onemkl::transpose trans,
+                 oneapi::mkl::uplo upper_lower,
+                 oneapi::mkl::transpose trans,
                  std::int64_t n,
                  std::int64_t k,
                  Treal alpha,
@@ -200,14 +200,14 @@ herk (USM Version)
 
    namespace oneapi::mkl::blas::column_major {
        sycl::event herk(sycl::queue &queue,
-                        onemkl::uplo upper_lower,
-                        onemkl::transpose trans,
+                        oneapi::mkl::uplo upper_lower,
+                        oneapi::mkl::transpose trans,
                         std::int64_t n,
                         std::int64_t k,
-                        Treal alpha,
+                        value_or_pointer<Treal> alpha,
                         const T *a,
                         std::int64_t lda,
-                        Treal beta,
+                        value_or_pointer<Treal> beta,
                         T *c,
                         std::int64_t ldc,
                         const std::vector<sycl::event> &dependencies = {})
@@ -216,14 +216,14 @@ herk (USM Version)
 
    namespace oneapi::mkl::blas::row_major {
        sycl::event herk(sycl::queue &queue,
-                        onemkl::uplo upper_lower,
-                        onemkl::transpose trans,
+                        oneapi::mkl::uplo upper_lower,
+                        oneapi::mkl::transpose trans,
                         std::int64_t n,
                         std::int64_t k,
-                        Treal alpha,
+                        value_or_pointer<Treal> alpha,
                         const T *a,
                         std::int64_t lda,
-                        Treal beta,
+                        value_or_pointer<Treal> beta,
                         T *c,
                         std::int64_t ldc,
                         const std::vector<sycl::event> &dependencies = {})
@@ -255,7 +255,7 @@ herk (USM Version)
       The value of ``k`` must be at least zero.
 
    alpha
-      Real scaling factor for the rank-k update.
+      Real scaling factor for the rank-k update. See :ref:`value_or_pointer` for more details.
 
    a
       Pointer to input matrix ``A``.
@@ -296,7 +296,7 @@ herk (USM Version)
            - ``lda`` must be at least ``n``.
 
    beta
-      Real scaling factor for matrix ``C``.
+      Real scaling factor for matrix ``C``. See :ref:`value_or_pointer` for more details.
 
    c
       Pointer to input/output matrix ``C``. Must have size at least

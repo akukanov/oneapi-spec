@@ -67,8 +67,8 @@ of matrices in ``a`` and ``c`` buffers is given by the ``batch_size`` parameter.
 
    namespace oneapi::mkl::blas::column_major {
        void syrk_batch(sycl::queue &queue,
-                       onemkl::uplo upper_lower,
-                       onemkl::transpose trans,
+                       oneapi::mkl::uplo upper_lower,
+                       oneapi::mkl::transpose trans,
                        std::int64_t n,
                        std::int64_t k,
                        T alpha,
@@ -85,8 +85,8 @@ of matrices in ``a`` and ``c`` buffers is given by the ``batch_size`` parameter.
 
    namespace oneapi::mkl::blas::row_major {
        void syrk_batch(sycl::queue &queue,
-                       onemkl::uplo upper_lower,
-                       onemkl::transpose trans,
+                       oneapi::mkl::uplo upper_lower,
+                       oneapi::mkl::transpose trans,
                        std::int64_t n,
                        std::int64_t k,
                        T alpha,
@@ -295,12 +295,12 @@ in ``a`` and ``c`` are given by the ``batch_size`` parameter.
       The queue where the routine should be executed.
 
    upper_lower
-      Array of ``group_count`` ``onemkl::upper_lower``
+      Array of ``group_count`` ``oneapi::mkl::upper_lower``
       values. ``upper_lower[i]`` specifies whether data in C for every
       matrix in group ``i`` is in upper or lower triangle.
 
    trans
-      Array of ``group_count`` ``onemkl::transpose`` values. ``trans[i]`` specifies the form of op(``A``) used in
+      Array of ``group_count`` ``oneapi::mkl::transpose`` values. ``trans[i]`` specifies the form of op(``A``) used in
       the rank-k update in group ``i``. See :ref:`onemkl_datatypes` for more details.
 
    n
@@ -389,11 +389,11 @@ in ``a`` and ``c`` are given by the ``batch_size`` parameter.
                               transpose trans,
                               std::int64_t n,
                               std::int64_t k,
-                              T alpha,
+                              value_or_pointer<T> alpha,
                               const T *a,
                               std::int64_t lda,
                               std::int64_t stride_a,
-                              T beta,
+                              value_or_pointer<T> beta,
                               T *c,
                               std::int64_t ldc,
                               std::int64_t stride_c,
@@ -408,11 +408,11 @@ in ``a`` and ``c`` are given by the ``batch_size`` parameter.
                               transpose trans,
                               std::int64_t n,
                               std::int64_t k,
-                              T alpha,
+                              value_or_pointer<T> alpha,
                               const T *a,
                               std::int64_t lda,
                               std::int64_t stride_a,
-                              T beta,
+                              value_or_pointer<T> beta,
                               T *c,
                               std::int64_t ldc,
                               std::int64_t stride_c,
@@ -446,7 +446,7 @@ in ``a`` and ``c`` are given by the ``batch_size`` parameter.
       Must be at least zero.
 
    alpha
-      Scaling factor for the rank-k updates.
+      Scaling factor for the rank-k updates. See :ref:`value_or_pointer` for more details.
 
    a
       Pointer to input matrices ``A`` with size ``stridea`` * ``batch_size``.
@@ -471,7 +471,7 @@ in ``a`` and ``c`` are given by the ``batch_size`` parameter.
       Stride between different ``A`` matrices.
 
    beta
-      Scaling factor for the matrices ``C``.
+      Scaling factor for the matrices ``C``. See :ref:`value_or_pointer` for more details.
 
    c
       Pointer to input/output matrices ``C`` with size ``stridec`` * ``batch_size``.

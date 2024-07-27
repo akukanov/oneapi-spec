@@ -6,12 +6,15 @@
 oneAPI Specifications
 =====================
 
-.. image:: https://github.com/oneapi-src/oneAPI-spec/actions/workflows/ci.yml/badge.svg
-   :target: https://github.com/oneapi-src/oneapi-spec/actions?query=workflow%3ACI
+.. image:: https://github.com/uxlfoundation/oneAPI-spec/actions/workflows/pr.yml/badge.svg
+   :target: https://github.com/uxlfoundation/oneAPI-spec/actions/workflows/pr.yml
 
-.. image:: https://api.reuse.software/badge/github.com/oneapi-src/oneapi-spec
-   :target: https://api.reuse.software/info/github.com/oneapi-src/oneapi-spec
+.. image:: https://api.reuse.software/badge/github.com/uxlfoundation/oneAPI-spec
+   :target: https://api.reuse.software/info/github.com/uxlfoundation/oneAPI-spec
    :alt: REUSE status
+
+.. image:: https://www.bestpractices.dev/projects/8323/badge
+   :target: https://www.bestpractices.dev/projects/8323
 
 This repository contains the sources for the `oneAPI
 Specification`_. For the latest build from main branch, see HTML_ and
@@ -123,11 +126,11 @@ Use the reuse_ tool
 
 Code examples::
 
-  reuse addheader --copyright "Intel Corporation" --year 2020 --license MIT source/examples/host-task.cpp
+  reuse addheader --copyright "Constributors to the oneapi-spec project" --license MIT source/examples/host-task.cpp
 
 Doc sources::
 
-  reuse addheader --copyright "Intel Corporation" --year 2020 --license CC-BY-4.0 source/index.rst
+  reuse addheader --copyright "Constributors to the oneapi-spec project" --license CC-BY-4.0 source/index.rst
 
 
 ----------------
@@ -147,7 +150,7 @@ Making a Release
 .. _`Read the Docs`: https://readthedocs.org/
 .. _`oneAPI Specification`: https://oneapi.io/spec
 .. _reuse: https://pypi.org/project/reuse/
-.. _HTML: https://oneapi-src.github.io/oneAPI-spec/spec/
-.. _PDF: https://oneapi-src.github.io/oneAPI-spec/spec/oneAPI-spec.pdf
+.. _HTML: https://uxlfoundation.github.io/oneAPI-spec/spec/
+.. _PDF: https://uxlfoundation.github.io/oneAPI-spec/spec/oneAPI-spec.pdf
 .. _`oneapi.io`: https://oneapi.io
 .. _roadmap: roadmap.rst

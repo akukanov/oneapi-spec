@@ -26,7 +26,7 @@ extensions += ['notfound.extension']  # noqa: F821
 # -- Project information -----------------------------------------------------
 
 project = u'oneAPI Specification'
-copyright = u'2022, Intel Corporation'
+copyright = u'The UXL Foundation Contributors'
 
 # The short X.Y version
 version = env['oneapi_version']  # noqa: F821
@@ -86,7 +86,7 @@ html_theme = 'sphinx_book_theme'
 # documentation.
 #
 html_theme_options = {
-    'repository_url': 'https://github.com/oneapi-src/oneapi-spec',
+    'repository_url': 'https://github.com/uxlfoundation/oneapi-spec',
     'path_to_docs': 'source',
     'use_issues_button': True,
     'use_edit_page_button': True,
@@ -172,7 +172,6 @@ todo_include_todos = True
 breathe_projects = {
     "oneCCL": "elements/oneCCL/doxygen/xml",
     "oneDNN": "elements/oneDNN/doxygen/xml",
-    "oneVPL": "elements/oneVPL/doxygen/xml",
 }
 breathe_default_project = 'oneAPI'
 

@@ -68,7 +68,7 @@ parameter.
 
    namespace oneapi::mkl::blas::column_major {
        void gemv_batch(sycl::queue &queue,
-                       onemkl::transpose trans,
+                       oneapi::mkl::transpose trans,
                        std::int64_t m,
                        std::int64_t n,
                        T alpha,
@@ -88,7 +88,7 @@ parameter.
 
    namespace oneapi::mkl::blas::row_major {
        void gemv_batch(sycl::queue &queue,
-                       onemkl::transpose trans,
+                       oneapi::mkl::transpose trans,
                        std::int64_t m,
                        std::int64_t n,
                        T alpha,
@@ -117,10 +117,10 @@ parameter.
       matrices ``A``. See :ref:`onemkl_datatypes` for more details.
 
    m
-      Number of rows of op(``A``). Must be at least zero.
+      Number of rows of ``A``. Must be at least zero.
 
    n
-      Number of columns of op(``A``). Must be at least zero.
+      Number of columns of ``A``. Must be at least zero.
 
    alpha
       Scaling factor for the matrix-vector products.
@@ -249,7 +249,7 @@ total number of vectors in ``x`` and ``y`` and matrices in ``A`` are given by th
 
    namespace oneapi::mkl::blas::column_major {
        sycl::event gemv_batch(sycl::queue &queue,
-                              const onemkl::transpose *trans,
+                              const oneapi::mkl::transpose *trans,
                               const std::int64_t *m,
                               const std::int64_t *n,
                               const T *alpha,
@@ -268,7 +268,7 @@ total number of vectors in ``x`` and ``y`` and matrices in ``A`` are given by th
 
    namespace oneapi::mkl::blas::row_major {
        sycl::event gemv_batch(sycl::queue &queue,
-                              const onemkl::transpose *trans,
+                              const oneapi::mkl::transpose *trans,
                               const std::int64_t *m,
                               const std::int64_t *n,
                               const T *alpha,
@@ -292,16 +292,16 @@ total number of vectors in ``x`` and ``y`` and matrices in ``A`` are given by th
       The queue where the routine should be executed.
 
    trans
-      Array of ``group_count`` ``onemkl::transpose`` values. ``trans[i]`` specifies the form of op(``A``) used in
+      Array of ``group_count`` ``oneapi::mkl::transpose`` values. ``trans[i]`` specifies the form of op(``A``) used in
       the matrix-vector product in group ``i``. See :ref:`onemkl_datatypes` for more details.
 
    m
       Array of ``group_count`` integers. ``m[i]`` specifies the
-      number of rows of op(``A``) for every matrix in group ``i``. All entries must be at least zero.
+      number of rows of ``A`` for every matrix in group ``i``. All entries must be at least zero.
 
    n
       Array of ``group_count`` integers. ``n[i]`` specifies the
-      number of columns of op(``A``) for every matrix in group ``i``. All entries must be at least zero.
+      number of columns of ``A`` for every matrix in group ``i``. All entries must be at least zero.
 
    alpha
       Array of ``group_count`` scalar elements. ``alpha[i]`` specifies
@@ -377,17 +377,17 @@ total number of vectors in ``x`` and ``y`` and matrices in ``A`` are given by th
 
    namespace oneapi::mkl::blas::column_major {
        sycl::event gemv_batch(sycl::queue &queue,
-                              onemkl::transpose trans,
+                              oneapi::mkl::transpose trans,
                               std::int64_t m,
                               std::int64_t n,
-                              T alpha,
+                              value_or_pointer<T> alpha,
                               const T *a,
                               std::int64_t lda,
                               std::int64_t stridea,
                               const T *x,
                               std::int64_t incx,
                               std::int64_t stridex,
-                              T beta,
+                              value_or_pointer<T> beta,
                               T *y,
                               std::int64_t incy,
                               std::int64_t stridey,
@@ -398,17 +398,17 @@ total number of vectors in ``x`` and ``y`` and matrices in ``A`` are given by th
 
    namespace oneapi::mkl::blas::row_major {
        sycl::event gemv_batch(sycl::queue &queue,
-                              onemkl::transpose trans,
+                              oneapi::mkl::transpose trans,
                               std::int64_t m,
                               std::int64_t n,
-                              T alpha,
+                              value_or_pointer<T> alpha,
                               const T *a,
                               std::int64_t lda,
                               std::int64_t stridea,
                               const T *x,
                               std::int64_t incx,
                               std::int64_t stridex,
-                              T beta,
+                              value_or_pointer<T> beta,
                               T *y,
                               std::int64_t incy,
                               std::int64_t stridey,
@@ -429,13 +429,13 @@ total number of vectors in ``x`` and ``y`` and matrices in ``A`` are given by th
       matrices ``A``. See :ref:`onemkl_datatypes` for more details.
 
    m
-      Number of rows of op(``A``). Must be at least zero.
+      Number of rows of ``A``. Must be at least zero.
 
    n
-      Number of columns of op(``A``). Must be at least zero.
+      Number of columns of ``A``. Must be at least zero.
 
    alpha
-      Scaling factor for the matrix-vector products.
+      Scaling factor for the matrix-vector products. See :ref:`value_or_pointer` for more details.
 
    a
       Pointer to the input matrices ``A`` with size ``stridea`` * ``batch_size``.
@@ -458,7 +458,7 @@ total number of vectors in ``x`` and ``y`` and matrices in ``A`` are given by th
       Stride between different consecutive ``X`` vectors, must be at least 0.
 
    beta
-      Scaling factor for the vector ``Y``.
+      Scaling factor for the vector ``Y``. See :ref:`value_or_pointer` for more details.
 
    y
       Pointer to the input/output vectors ``Y`` with size ``stridey`` * ``batch_size``.

@@ -50,7 +50,7 @@ sbmv (Buffer Version)
 
    namespace oneapi::mkl::blas::column_major {
        void sbmv(sycl::queue &queue,
-                 onemkl::uplo upper_lower,
+                 oneapi::mkl::uplo upper_lower,
                  std::int64_t n,
                  std::int64_t k,
                  T alpha,
@@ -66,7 +66,7 @@ sbmv (Buffer Version)
 
    namespace oneapi::mkl::blas::row_major {
        void sbmv(sycl::queue &queue,
-                 onemkl::uplo upper_lower,
+                 oneapi::mkl::uplo upper_lower,
                  std::int64_t n,
                  std::int64_t k,
                  T alpha,
@@ -166,15 +166,15 @@ sbmv (USM Version)
 
    namespace oneapi::mkl::blas::column_major {
        sycl::event sbmv(sycl::queue &queue,
-                        onemkl::uplo upper_lower,
+                        oneapi::mkl::uplo upper_lower,
                         std::int64_t n,
                         std::int64_t k,
-                        T alpha,
+                        value_or_pointer<T> alpha,
                         const T *a,
                         std::int64_t lda,
                         const T *x,
                         std::int64_t incx,
-                        T beta,
+                        value_or_pointer<T> beta,
                         T *y,
                         std::int64_t incy,
                         const std::vector<sycl::event> &dependencies = {})
@@ -183,15 +183,15 @@ sbmv (USM Version)
 
    namespace oneapi::mkl::blas::row_major {
        sycl::event sbmv(sycl::queue &queue,
-                        onemkl::uplo upper_lower,
+                        oneapi::mkl::uplo upper_lower,
                         std::int64_t n,
                         std::int64_t k,
-                        T alpha,
+                        value_or_pointer<T> alpha,
                         const T *a,
                         std::int64_t lda,
                         const T *x,
                         std::int64_t incx,
-                        T beta,
+                        value_or_pointer<T> beta,
                         T *y,
                         std::int64_t incy,
                         const std::vector<sycl::event> &dependencies = {})
@@ -215,7 +215,7 @@ sbmv (USM Version)
       zero.
 
    alpha
-      Scaling factor for the matrix-vector product.
+      Scaling factor for the matrix-vector product. See :ref:`value_or_pointer` for more details.
 
    a
       Pointer to input matrix ``A``. The array holding input matrix
@@ -236,7 +236,7 @@ sbmv (USM Version)
       Stride of vector ``x``. Must not be zero.
 
    beta
-      Scaling factor for vector ``y``.
+      Scaling factor for vector ``y``. See :ref:`value_or_pointer` for more details.
 
    y
       Pointer to input/output vector ``y``. The array holding

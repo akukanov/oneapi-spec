@@ -19,7 +19,7 @@ acceptable) accuracy.
 Workflow
 ********
 
-oneDNN support symmetric and assymetric quantization models.
+oneDNN support symmetric and asymmetric quantization models.
 
 .. _int8-quantization-label:
 
@@ -27,7 +27,7 @@ Quantization Model
 ==================
 
 For each int8 tensor, the oneDNN library allows to specify scaling
-factors and zero-points (also refered to as quantization
+factors and zero-points (also referred to as quantization
 parameters), and assumes the following mathematical relationship:
 
 .. math::
@@ -40,12 +40,12 @@ where :math:`scale_{x}` is a *scaling factor* in float format,
 to the arrays. In order to provide best performance, oneDNN does not
 compute those scaling factors and zero-points as part of primitive
 computation. Those should be provided by the user through the
-:ref:`attribute mecanism<attributes-quantization-label>`.
+:ref:`attribute mechanism<attributes-quantization-label>`.
 
 These quantization parameters can either be computed ahead of time
 using calibration tools (*static* quantization) or at runtime based on
 the actual minimum and maximum values of a tensor (*dynamic*
-quantization). Either method can be used in conjuction with oneDNN, as
+quantization). Either method can be used in conjunction with oneDNN, as
 the quantization parameters are passed to the oneDNN primitives at
 execution time.
 

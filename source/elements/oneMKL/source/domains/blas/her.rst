@@ -51,7 +51,7 @@ her (Buffer Version)
 
    namespace oneapi::mkl::blas::column_major {
        void her(sycl::queue &queue,
-                onemkl::uplo upper_lower,
+                oneapi::mkl::uplo upper_lower,
                 std::int64_t n,
                 Treal alpha,
                 sycl::buffer<T,1> &x,
@@ -63,7 +63,7 @@ her (Buffer Version)
 
    namespace oneapi::mkl::blas::row_major {
        void her(sycl::queue &queue,
-                onemkl::uplo upper_lower,
+                oneapi::mkl::uplo upper_lower,
                 std::int64_t n,
                 Treal alpha,
                 sycl::buffer<T,1> &x,
@@ -149,9 +149,9 @@ her (USM Version)
 
    namespace oneapi::mkl::blas::column_major {
        sycl::event her(sycl::queue &queue,
-                       onemkl::uplo upper_lower,
+                       oneapi::mkl::uplo upper_lower,
                        std::int64_t n,
-                       Treal alpha,
+                       value_or_pointer<Treal> alpha,
                        const T *x,
                        std::int64_t incx,
                        T *a,
@@ -162,9 +162,9 @@ her (USM Version)
 
    namespace oneapi::mkl::blas::row_major {
        sycl::event her(sycl::queue &queue,
-                       onemkl::uplo upper_lower,
+                       oneapi::mkl::uplo upper_lower,
                        std::int64_t n,
-                       Treal alpha,
+                       value_or_pointer<Treal> alpha,
                        const T *x,
                        std::int64_t incx,
                        T *a,
@@ -186,7 +186,7 @@ her (USM Version)
       Number of rows and columns of ``A``. Must be at least zero.
 
    alpha
-      Scaling factor for the matrix-vector product.
+      Scaling factor for the matrix-vector product. See :ref:`value_or_pointer` for more details.
 
    x
       Pointer to input vector ``x``. The array holding input vector

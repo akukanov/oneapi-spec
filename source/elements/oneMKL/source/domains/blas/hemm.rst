@@ -61,8 +61,8 @@ hemm (Buffer Version)
 
    namespace oneapi::mkl::blas::column_major {
        void hemm(sycl::queue &queue,
-                 onemkl::side left_right,
-                 onemkl::uplo upper_lower,
+                 oneapi::mkl::side left_right,
+                 oneapi::mkl::uplo upper_lower,
                  std::int64_t m,
                  std::int64_t n,
                  T alpha,
@@ -78,8 +78,8 @@ hemm (Buffer Version)
 
    namespace oneapi::mkl::blas::row_major {
        void hemm(sycl::queue &queue,
-                 onemkl::side left_right,
-                 onemkl::uplo upper_lower,
+                 oneapi::mkl::side left_right,
+                 oneapi::mkl::uplo upper_lower,
                  std::int64_t m,
                  std::int64_t n,
                  T alpha,
@@ -206,16 +206,16 @@ hemm (USM Version)
 
    namespace oneapi::mkl::blas::column_major {
        sycl::event hemm(sycl::queue &queue,
-                        onemkl::side left_right,
-                        onemkl::uplo upper_lower,
+                        oneapi::mkl::side left_right,
+                        oneapi::mkl::uplo upper_lower,
                         std::int64_t m,
                         std::int64_t n,
-                        T alpha,
+                        value_or_pointer<T> alpha,
                         const T *a,
                         std::int64_t lda,
                         const T *b,
                         std::int64_t ldb,
-                        T beta,
+                        value_or_pointer<T> beta,
                         T *c,
                         std::int64_t ldc,
                         const std::vector<sycl::event> &dependencies = {})
@@ -224,16 +224,16 @@ hemm (USM Version)
 
    namespace oneapi::mkl::blas::row_major {
        sycl::event hemm(sycl::queue &queue,
-                        onemkl::side left_right,
-                        onemkl::uplo upper_lower,
+                        oneapi::mkl::side left_right,
+                        oneapi::mkl::uplo upper_lower,
                         std::int64_t m,
                         std::int64_t n,
-                        T alpha,
+                        value_or_pointer<T> alpha,
                         const T *a,
                         std::int64_t lda,
                         const T *b,
                         std::int64_t ldb,
-                        T beta,
+                        value_or_pointer<T> beta,
                         T *c,
                         std::int64_t ldc,
                         const std::vector<sycl::event> &dependencies = {})
@@ -266,7 +266,7 @@ hemm (USM Version)
       The value of ``n`` must be at least zero.
 
    alpha
-      Scaling factor for the matrix-matrix product.
+      Scaling factor for the matrix-matrix product. See :ref:`value_or_pointer` for more details.
 
    a
       Pointer to input matrix ``A``. Must have size at least
@@ -293,7 +293,7 @@ hemm (USM Version)
       least ``n`` if column major layout is used to store matrices.
 
    beta
-      Scaling factor for matrix ``C``.
+      Scaling factor for matrix ``C``. See :ref:`value_or_pointer` for more details.
 
    c
       The pointer to input/output matrix ``C``. It must have a

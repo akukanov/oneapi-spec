@@ -101,8 +101,8 @@ gemm (Buffer Version)
 
    namespace oneapi::mkl::blas::column_major {
        void gemm(sycl::queue &queue,
-                 onemkl::transpose transa,
-                 onemkl::transpose transb,
+                 oneapi::mkl::transpose transa,
+                 oneapi::mkl::transpose transb,
                  std::int64_t m,
                  std::int64_t n,
                  std::int64_t k,
@@ -119,8 +119,8 @@ gemm (Buffer Version)
 
    namespace oneapi::mkl::blas::row_major {
        void gemm(sycl::queue &queue,
-                 onemkl::transpose transa,
-                 onemkl::transpose transb,
+                 oneapi::mkl::transpose transa,
+                 oneapi::mkl::transpose transb,
                  std::int64_t m,
                  std::int64_t n,
                  std::int64_t k,
@@ -303,17 +303,17 @@ gemm (USM Version)
 
    namespace oneapi::mkl::blas::column_major {
        sycl::event gemm(sycl::queue &queue,
-                        onemkl::transpose transa,
-                        onemkl::transpose transb,
+                        oneapi::mkl::transpose transa,
+                        oneapi::mkl::transpose transb,
                         std::int64_t m,
                         std::int64_t n,
                         std::int64_t k,
-                        Ts alpha,
+                        value_or_pointer<Ts> alpha,
                         const Ta *a,
                         std::int64_t lda,
                         const Tb *b,
                         std::int64_t ldb,
-                        Ts beta,
+                        value_or_poitner<Ts> beta,
                         Tc *c,
                         std::int64_t ldc,
                         const std::vector<sycl::event> &dependencies = {})
@@ -322,17 +322,17 @@ gemm (USM Version)
 
    namespace oneapi::mkl::blas::row_major {
        sycl::event gemm(sycl::queue &queue,
-                        onemkl::transpose transa,
-                        onemkl::transpose transb,
+                        oneapi::mkl::transpose transa,
+                        oneapi::mkl::transpose transb,
                         std::int64_t m,
                         std::int64_t n,
                         std::int64_t k,
-                        Ts alpha,
+                        value_or_pointer<Ts> alpha,
                         const Ta *a,
                         std::int64_t lda,
                         const Tb *b,
                         std::int64_t ldb,
-                        Ts beta,
+                        value_or_pointer<Ts> beta,
                         Tc *c,
                         std::int64_t ldc,
                         const std::vector<sycl::event> &dependencies = {})
@@ -373,7 +373,7 @@ gemm (USM Version)
 
 
    alpha
-      Scaling factor for the matrix-matrix product.
+      Scaling factor for the matrix-matrix product. See :ref:`value_or_pointer` for more details.
 
 
    a
@@ -453,7 +453,7 @@ gemm (USM Version)
            - ``ldb`` must be at least ``k``.
 
    beta
-      Scaling factor for matrix ``C``.
+      Scaling factor for matrix ``C``. See :ref:`value_or_pointer` for more details.
 
    c
       The pointer to input/output matrix ``C``. It must have a

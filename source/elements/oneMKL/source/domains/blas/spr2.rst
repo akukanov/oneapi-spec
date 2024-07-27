@@ -48,7 +48,7 @@ spr2 (Buffer Version)
 
    namespace oneapi::mkl::blas::column_major {
        void spr2(sycl::queue &queue,
-                 onemkl::uplo upper_lower,
+                 oneapi::mkl::uplo upper_lower,
                  std::int64_t n,
                  T alpha,
                  sycl::buffer<T,1> &x,
@@ -61,7 +61,7 @@ spr2 (Buffer Version)
 
    namespace oneapi::mkl::blas::row_major {
        void spr2(sycl::queue &queue,
-                 onemkl::uplo upper_lower,
+                 oneapi::mkl::uplo upper_lower,
                  std::int64_t n,
                  T alpha,
                  sycl::buffer<T,1> &x,
@@ -150,9 +150,9 @@ spr2 (USM Version)
 
    namespace oneapi::mkl::blas::column_major {
        sycl::event spr2(sycl::queue &queue,
-                        onemkl::uplo upper_lower,
+                        oneapi::mkl::uplo upper_lower,
                         std::int64_t n,
-                        T alpha,
+                        value_or_pointer<T> alpha,
                         const T *x,
                         std::int64_t incx,
                         const T *y,
@@ -164,9 +164,9 @@ spr2 (USM Version)
 
    namespace oneapi::mkl::blas::row_major {
        sycl::event spr2(sycl::queue &queue,
-                        onemkl::uplo upper_lower,
+                        oneapi::mkl::uplo upper_lower,
                         std::int64_t n,
-                        T alpha,
+                        value_or_pointer<T> alpha,
                         const T *x,
                         std::int64_t incx,
                         const T *y,
@@ -189,7 +189,7 @@ spr2 (USM Version)
       Number of rows and columns of ``A``. Must be at least zero.
 
    alpha
-      Scaling factor for the matrix-vector product.
+      Scaling factor for the matrix-vector product. See :ref:`value_or_pointer` for more details.
 
    x
       Pointer to input vector ``x``. The array holding input vector

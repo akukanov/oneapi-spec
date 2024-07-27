@@ -111,20 +111,20 @@ of matrices in ``a``, ``b`` and ``c`` buffers is given by the ``batch_size`` par
 
    namespace oneapi::mkl::blas::column_major {
        void gemm_batch(sycl::queue &queue,
-                       onemkl::transpose transa,
-                       onemkl::transpose transb,
+                       oneapi::mkl::transpose transa,
+                       oneapi::mkl::transpose transb,
                        std::int64_t m,
                        std::int64_t n,
                        std::int64_t k,
-                       T alpha,
-                       sycl::buffer<T,1> &a,
+                       Ts alpha,
+                       sycl::buffer<Ta,1> &a,
                        std::int64_t lda,
                        std::int64_t stridea,
-                       sycl::buffer<T,1> &b,
+                       sycl::buffer<Tb,1> &b,
                        std::int64_t ldb,
                        std::int64_t strideb,
-                       T beta,
-                       sycl::buffer<T,1> &c,
+                       Ts beta,
+                       sycl::buffer<Tc,1> &c,
                        std::int64_t ldc,
                        std::int64_t stridec,
                        std::int64_t batch_size)
@@ -133,20 +133,20 @@ of matrices in ``a``, ``b`` and ``c`` buffers is given by the ``batch_size`` par
 
    namespace oneapi::mkl::blas::row_major {
        void gemm_batch(sycl::queue &queue,
-                       onemkl::transpose transa,
-                       onemkl::transpose transb,
+                       oneapi::mkl::transpose transa,
+                       oneapi::mkl::transpose transb,
                        std::int64_t m,
                        std::int64_t n,
                        std::int64_t k,
-                       T alpha,
-                       sycl::buffer<T,1> &a,
+                       Ts alpha,
+                       sycl::buffer<Ta,1> &a,
                        std::int64_t lda,
                        std::int64_t stridea,
-                       sycl::buffer<T,1> &b,
+                       sycl::buffer<Tb,1> &b,
                        std::int64_t ldb,
                        std::int64_t strideb,
-                       T beta,
-                       sycl::buffer<T,1> &c,
+                       Ts beta,
+                       sycl::buffer<Tc,1> &c,
                        std::int64_t ldc,
                        std::int64_t stridec,
                        std::int64_t batch_size)
@@ -358,36 +358,36 @@ in ``a``, ``b`` and ``c`` are given by the ``batch_size`` parameter.
 
    namespace oneapi::mkl::blas::column_major {
        sycl::event gemm_batch(sycl::queue &queue,
-                              const onemkl::transpose *transa,
-                              const onemkl::transpose *transb,
+                              const oneapi::mkl::transpose *transa,
+                              const oneapi::mkl::transpose *transb,
                               const std::int64_t *m,
                               const std::int64_t *n,
                               const std::int64_t *k,
-                              const T *alpha,
-                              const T **a,
+                              const Ts *alpha,
+                              const Ta **a,
                               const std::int64_t *lda,
-                              const T **b,
+                              const Tb **b,
                               const std::int64_t *ldb,
-                              const T *beta,
-                              T **c,
+                              const Ts *beta,
+                              Tc **c,
                               const std::int64_t *ldc,
                               std::int64_t group_count,
                               const std::int64_t *group_size,
                               const std::vector<sycl::event> &dependencies = {})
 
        sycl::event gemm_batch(sycl::queue &queue,
-                              const sycl::span<onemkl::transpose> &transa,
-                              const sycl::span<onemkl::transpose> &transb,
+                              const sycl::span<oneapi::mkl::transpose> &transa,
+                              const sycl::span<oneapi::mkl::transpose> &transb,
                               const sycl::span<std::int64_t> &m,
                               const sycl::span<std::int64_t> &n,
                               const sycl::span<std::int64_t> &k,
-                              const sycl::span<std::int64_t> &alpha,
-                              const sycl::span<const T*> &a,
+                              const sycl::span<Ts> &alpha,
+                              const sycl::span<const Ta*> &a,
                               const sycl::span<std::int64_t> &lda,
-                              const sycl::span<const T*> &b,
+                              const sycl::span<const Tb*> &b,
                               const sycl::span<std::int64_t> &ldb,
-                              const sycl::span<T> &beta,
-                              sycl::span<T*> &c,
+                              const sycl::span<Ts> &beta,
+                              sycl::span<Tc*> &c,
                               const sycl::span<std::int64_t> &ldc,
                               size_t group_count,
                               const sycl::span<size_t> &group_sizes,
@@ -397,36 +397,36 @@ in ``a``, ``b`` and ``c`` are given by the ``batch_size`` parameter.
 
    namespace oneapi::mkl::blas::row_major {
        sycl::event gemm_batch(sycl::queue &queue,
-                              const onemkl::transpose *transa,
-                              const onemkl::transpose *transb,
+                              const oneapi::mkl::transpose *transa,
+                              const oneapi::mkl::transpose *transb,
                               const std::int64_t *m,
                               const std::int64_t *n,
                               const std::int64_t *k,
-                              const T *alpha,
-                              const T **a,
+                              const Ts *alpha,
+                              const Ta **a,
                               const std::int64_t *lda,
-                              const T **b,
+                              const Tb **b,
                               const std::int64_t *ldb,
-                              const T *beta,
-                              T **c,
+                              const Ts *beta,
+                              Tc **c,
                               const std::int64_t *ldc,
                               std::int64_t group_count,
                               const std::int64_t *group_size,
                               const std::vector<sycl::event> &dependencies = {})
 
        sycl::event gemm_batch(sycl::queue &queue,
-                              const sycl::span<onemkl::transpose> &transa,
-                              const sycl::span<onemkl::transpose> &transb,
+                              const sycl::span<oneapi::mkl::transpose> &transa,
+                              const sycl::span<oneapi::mkl::transpose> &transb,
                               const sycl::span<std::int64_t> &m,
                               const sycl::span<std::int64_t> &n,
                               const sycl::span<std::int64_t> &k,
-                              const sycl::span<std::int64_t> &alpha,
-                              const sycl::span<const T*> &a,
+                              const sycl::span<Ts> &alpha,
+                              const sycl::span<const Ta*> &a,
                               const sycl::span<std::int64_t> &lda,
-                              const sycl::span<const T*> &b,
+                              const sycl::span<const Tb*> &b,
                               const sycl::span<std::int64_t> &ldb,
-                              const sycl::span<T> &beta,
-                              sycl::span<T*> &c,
+                              const sycl::span<Ts> &beta,
+                              sycl::span<Tc*> &c,
                               const sycl::span<std::int64_t> &ldc,
                               size_t group_count,
                               const sycl::span<size_t> &group_sizes,
@@ -441,11 +441,11 @@ in ``a``, ``b`` and ``c`` are given by the ``batch_size`` parameter.
       The queue where the routine should be executed.
 
    transa
-      Array or span of ``group_count`` ``onemkl::transpose`` values. ``transa[i]`` specifies the form of op(``A``) used in
+      Array or span of ``group_count`` ``oneapi::mkl::transpose`` values. ``transa[i]`` specifies the form of op(``A``) used in
       the matrix multiplication in group ``i``. See :ref:`onemkl_datatypes` for more details.
 
    transb
-      Array or span of ``group_count`` ``onemkl::transpose`` values. ``transb[i]`` specifies the form of op(``B``) used in
+      Array or span of ``group_count`` ``oneapi::mkl::transpose`` values. ``transb[i]`` specifies the form of op(``B``) used in
       the matrix multiplication in group ``i``. See :ref:`onemkl_datatypes` for more details.
 
    m
@@ -588,20 +588,20 @@ in ``a``, ``b`` and ``c`` are given by the ``batch_size`` parameter.
 
    namespace oneapi::mkl::blas::column_major {
        sycl::event gemm_batch(sycl::queue &queue,
-                              onemkl::transpose transa,
-                              onemkl::transpose transb,
+                              oneapi::mkl::transpose transa,
+                              oneapi::mkl::transpose transb,
                               std::int64_t m,
                               std::int64_t n,
                               std::int64_t k,
-                              T alpha,
-                              const T *a,
+                              value_or_pointer<Ts> alpha,
+                              const Ta *a,
                               std::int64_t lda,
                               std::int64_t stridea,
-                              const T *b,
+                              const Tb *b,
                               std::int64_t ldb,
                               std::int64_t strideb,
-                              T beta,
-                              T *c,
+                              value_or_pointer<Ts> beta,
+                              Tc *c,
                               std::int64_t ldc,
                               std::int64_t stridec,
                               std::int64_t batch_size,
@@ -611,20 +611,20 @@ in ``a``, ``b`` and ``c`` are given by the ``batch_size`` parameter.
 
    namespace oneapi::mkl::blas::row_major {
        sycl::event gemm_batch(sycl::queue &queue,
-                              onemkl::transpose transa,
-                              onemkl::transpose transb,
+                              oneapi::mkl::transpose transa,
+                              oneapi::mkl::transpose transb,
                               std::int64_t m,
                               std::int64_t n,
                               std::int64_t k,
-                              T alpha,
-                              const T *a,
+                              value_or_pointer<Ts> alpha,
+                              const Ta *a,
                               std::int64_t lda,
                               std::int64_t stridea,
-                              const T *b,
+                              const Tb *b,
                               std::int64_t ldb,
                               std::int64_t strideb,
-                              T beta,
-                              T *c,
+                              value_or_pointer<Ts> beta,
+                              Tc *c,
                               std::int64_t ldc,
                               std::int64_t stridec,
                               std::int64_t batch_size,
@@ -657,7 +657,7 @@ in ``a``, ``b`` and ``c`` are given by the ``batch_size`` parameter.
       least zero.
 
    alpha
-      Scaling factor for the matrix-matrix products.
+      Scaling factor for the matrix-matrix products. See :ref:`value_or_pointer` for more details.
 
    a
       Pointer to input matrices ``A`` with size ``stridea`` * ``batch_size``.
@@ -704,7 +704,7 @@ in ``a``, ``b`` and ``c`` are given by the ``batch_size`` parameter.
       Stride between different ``B`` matrices.
 
    beta
-      Scaling factor for the matrices ``C``.
+      Scaling factor for the matrices ``C``. See :ref:`value_or_pointer` for more details.
 
    c
       Pointer to input/output matrices ``C`` with size ``stridec`` * ``batch_size``.

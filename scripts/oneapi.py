@@ -94,8 +94,6 @@ def sphinx(root, target):
     sphinx_args = '-N'
     if not cl_args.verbose:
         sphinx_args += ' -q'
-    if not cl_args.serial:
-        sphinx_args += ' -j auto'
     if cl_args.a:
         sphinx_args += ' -a'
     if cl_args.n:
@@ -229,20 +227,6 @@ def remove_elements(li, elements):
 
 
 @action
-def update_oneart(root, target=None):
-    for component in ['embree', 'ospray']:
-        copy(
-            f'repos/{component}/doc/{component}-spec.rst',
-            'source/elements/oneART/source',
-        )
-    for component in ['oidn', 'openvkl']:
-        copy(
-            f'repos/{component}/doc/tmp/{component}-spec.rst',
-            'source/elements/oneART/source',
-        )
-
-
-@action
 def sort_words(root, target=None):
     with open(join('source', 'spelling_wordlist.txt')) as fin:
         lines = fin.readlines()
@@ -262,7 +246,6 @@ commands = {
     'singlehtml': build,
     'prep': prep,
     'sort-words': sort_words,
-    'update-oneart': update_oneart,
 }
 
 dirs = [
@@ -270,8 +253,6 @@ dirs = [
     'oneDAL',
     'oneMKL',
     'oneTBB',
-    'oneVPL',
-    'sycl',
     'l0',
     'oneDPL',
     'oneDNN',
@@ -288,7 +269,6 @@ def main():
     parser.add_argument('--branch')
     parser.add_argument('--verbose', action='store_true')
     parser.add_argument('--dry-run', action='store_true')
-    parser.add_argument('--serial', action='store_true')
     parser.add_argument('-W', action='store_true')
     parser.add_argument(
         '-a', action='store_true', help='sphinx -a (build all files)'
